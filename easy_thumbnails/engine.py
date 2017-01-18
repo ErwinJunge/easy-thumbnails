@@ -67,6 +67,9 @@ def save_image(image, destination=None, filename=None, **options):
             # shouldn't be triggered very often these days, as recent versions
             # of pillow avoid the MAXBLOCK limitation.
             pass
+    if format == 'GIF':
+        image.save(destination, format=format, save_all=True)
+        saved = True
     if not saved:
         image.save(destination, format=format, **options)
     if hasattr(destination, 'seek'):
